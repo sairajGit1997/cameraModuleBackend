@@ -34,7 +34,9 @@ def detect_labels(data):
             if confidence >= 0.8:
                 x1, y1, x2, y2 = box.xyxy[0]
                 x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
-                results.append({'confidence': confidence, 'coordinates': (x1, y1, x2, y2)})
+                x3, y3 = x1, y2
+                x4, y4 = x2, y1
+                results.append({'confidence': confidence, 'coordinates': [(x1, y1), (x2, y2), (x3, y3), (x4, y4)]})
 
     emit('results', results)
 
